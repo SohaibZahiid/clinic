@@ -14,22 +14,14 @@ import java.util.List;
 @Entity
 public class Dentist extends Person{
     private String speciality;
-    @OneToMany(mappedBy = "dentist")
-    private List<Shift> shifts;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-    @OneToOne
-    private Schedule schedule;
 
-
-    public Dentist(String name, String surname, String dni, Date birthdate, String phone, String address, String speciality, List<Shift> shifts, User user, Schedule schedule) {
+    public Dentist(String name, String surname, String dni, Date birthdate, String phone, String address, String speciality) {
         super(name, surname, dni, birthdate, phone, address);
         this.speciality = speciality;
-        this.shifts = shifts;
-        this.user = user;
-        this.schedule = schedule;
     }
 
-
+    public Dentist(int id, String name, String surname, String dni, Date birthdate, String phone, String address, String speciality) {
+        super(id, name, surname, dni, birthdate, phone, address);
+        this.speciality = speciality;
+    }
 }

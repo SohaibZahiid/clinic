@@ -16,7 +16,6 @@ public class UpdateUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         id = Integer.parseInt(request.getParameter("id"));
         User user = service.getUserById(id);
-        System.out.println(user);
         request.setAttribute("user", user);
         request.getRequestDispatcher("updateUser.jsp").forward(request, response);
     }

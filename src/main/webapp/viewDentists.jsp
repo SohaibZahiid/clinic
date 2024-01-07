@@ -62,11 +62,11 @@
                     <td><%= dentist.getAddress() %>
                     </td>
                     <td style="display: flex;">
-                        <form class="mr-2" method="POST" action="DeleteUserServlet">
+                        <form class="mr-2" method="POST" action="DeleteDentistServlet">
                             <input type="hidden" name="id" value="<%=dentist.getId()%>"/>
                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </form>
-                        <form method="GET" action="UpdateUserServlet">
+                        <form method="GET" action="UpdateDentistServlet">
                             <input type="hidden" name="id" value="<%=dentist.getId()%>"/>
                             <button type="submit" class="btn btn-primary"><i class="fa fa-pen"></i></button>
                         </form>

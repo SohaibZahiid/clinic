@@ -55,11 +55,9 @@ public class DentistServlet extends HttpServlet {
         dentist.setPhone(phone);
         dentist.setAddress(address);
 
-        System.out.println(dentist);
-
         service.save(dentist);
 
-       // response.sendRedirect("DentistServlet");
+        response.sendRedirect("DentistServlet");
 
     }
 }

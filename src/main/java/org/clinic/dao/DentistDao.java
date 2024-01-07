@@ -2,16 +2,14 @@ package org.clinic.dao;
 
 
 
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.clinic.entity.Dentist;
 
-import jakarta.persistence.EntityManager;
 import org.clinic.entity.User;
+
 
 import java.util.List;
 
@@ -27,8 +25,39 @@ public class DentistDao {
     }
 
     public List<Dentist> getAllDentists() {
-        String jpql = "SELECT d FROM Dentist d";
-        TypedQuery<Dentist> query = em.createQuery(jpql, Dentist.class);
-        return query.getResultList();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Dentist> query = cb.createQuery(Dentist.class);
+        Root<Dentist> root = query.from(Dentist.class);
+        query.select(cb.construct(Dentist.class, root.get("id"), root.get("name"), root.get("surname"), root.get("dni"), root.get("birthdate"), root.get("phone"),root.get("address"), root.get("speciality")));
+        return em.createQuery(query).getResultList();
+    }
+
+    public Dentist delete(int id) {
+        Dentist dentist = em.find(Dentist.class, id);
+        em.getTransaction().begin();
+        em.remove(dentist);
+        em.getTransaction().commit();
+        return dentist;
+    }
+
+    public Dentist update(Dentist dentist) {
+        em.getTransaction().begin();
+
+        Dentist d = em.find(Dentist.class, dentist.getId());
+        d.setName(dentist.getName());
+        d.setSurname(dentist.getSurname());
+        d.setDni(dentist.getDni());
+        d.setBirthdate(dentist.getBirthdate());
+        d.setPhone(dentist.getPhone());
+        d.setAddress(dentist.getAddress());
+
+        em.getTransaction().commit();
+
+        return d;
+    }
+
+    public Dentist getDentistById(int id) {
+        Dentist dentist = em.find(Dentist.class, id);
+        return dentist;
     }
 }
