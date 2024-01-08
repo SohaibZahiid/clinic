@@ -1,16 +1,17 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.clinic.entity.Dentist" %>
+<%@ page import="org.clinic.entity.Patient" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="components/templateStart.jsp" %>
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Dentists</h1>
+<h1 class="h3 mb-2 text-gray-800">Patients</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        <% List<Dentist> dentists = (List) request.getAttribute("dentists");
-            if (!dentists.isEmpty()) {
+        <% List<Patient> patients = (List) request.getAttribute("patients");
+            if (!patients.isEmpty()) {
         %>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable">
@@ -21,7 +22,7 @@
                     <th>Surname</th>
                     <th>DNI</th>
                     <th>Birthdate</th>
-                    <th>Speciality</th>
+                    <th>Blood type</th>
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Action</th>
@@ -34,7 +35,7 @@
                     <th>Surname</th>
                     <th>DNI</th>
                     <th>Birthdate</th>
-                    <th>Speciality</th>
+                    <th>Blood type</th>
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Action</th>
@@ -42,32 +43,32 @@
                 </tfoot>
                 <tbody>
                 <%
-                    for (Dentist dentist : dentists) {
+                    for (Patient patient : patients) {
                 %>
                 <tr>
-                    <td><%= dentist.getId() %>
+                    <td><%= patient.getId() %>
                     </td>
-                    <td><%= dentist.getName() %>
+                    <td><%= patient.getName() %>
                     </td>
-                    <td><%= dentist.getSurname() %>
+                    <td><%= patient.getSurname() %>
                     </td>
-                    <td><%= dentist.getDni() %>
+                    <td><%= patient.getDni() %>
                     </td>
-                    <td><%= dentist.getBirthdate() %>
+                    <td><%= patient.getBirthdate() %>
                     </td>
-                    <td><%= dentist.getSpeciality() %>
+                    <td><%= patient.getBlood_type() %>
                     </td>
-                    <td><%= dentist.getPhone() %>
+                    <td><%= patient.getPhone() %>
                     </td>
-                    <td><%= dentist.getAddress() %>
+                    <td><%= patient.getAddress() %>
                     </td>
                     <td style="display: flex;">
-                        <form class="mr-2" method="POST" action="DeleteDentistServlet">
-                            <input type="hidden" name="id" value="<%=dentist.getId()%>"/>
+                        <form class="mr-2" method="POST" action="DeletePatientServlet">
+                            <input type="hidden" name="id" value="<%=patient.getId()%>"/>
                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </form>
-                        <form method="GET" action="UpdateDentistServlet">
-                            <input type="hidden" name="id" value="<%=dentist.getId()%>"/>
+                        <form method="GET" action="UpdatePatientServlet">
+                            <input type="hidden" name="id" value="<%=patient.getId()%>"/>
                             <button type="submit" class="btn btn-primary"><i class="fa fa-pen"></i></button>
                         </form>
                     </td>
@@ -82,7 +83,7 @@
         <%
         } else {
         %>
-        <p>0 Dentists found. </p>
+        <p>0 Patients found. </p>
         <%
             }
         %>

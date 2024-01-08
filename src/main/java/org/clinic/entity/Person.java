@@ -5,6 +5,8 @@ import lombok.*;
 
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -19,17 +21,8 @@ public class Person {
     private String name;
     private String surname;
     private String dni;
-    @Temporal(TemporalType.DATE)
-    private Date birthdate;
+    private LocalDate birthdate;
     private String phone;
     private String address;
 
-    public Person(String name, String surname, String dni, Date birthdate, String phone, String address) {
-        this.name = name;
-        this.surname = surname;
-        this.dni = dni;
-        this.birthdate = birthdate;
-        this.phone = phone;
-        this.address = address;
-    }
 }

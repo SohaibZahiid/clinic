@@ -23,7 +23,7 @@
 </head>
 
 <body class="bg-gradient-primary">
-<% if(session.getAttribute("user") != null) {
+<% if(session.getAttribute("loggedUser") != null) {
     response.sendRedirect("index.jsp");
 } %>
 

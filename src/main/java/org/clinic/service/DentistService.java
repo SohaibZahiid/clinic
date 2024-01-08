@@ -19,4 +19,16 @@ public class DentistService {
     public List<Dentist> getAllDentists() {
         return dentistDao.getAllDentists();
     }
+
+    public Dentist delete(int id) {
+        return dentistDao.delete(id);
+    }
+
+    public Dentist getDentistById(int id) {
+        return  dentistDao.getDentistById(id);
+    }
+
+    public Dentist update(Dentist dentist) {
+        return dentistDao.update(dentist);
+    }
 }

@@ -12,45 +12,43 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 
-@WebServlet(name = "DentistServlet", value = "/DentistServlet")
-public class DentistServlet extends HttpServlet {
-
+@WebServlet(name = "UpdateDentistServlet", value = "/UpdateDentistServlet")
+public class UpdateDentistServlet extends HttpServlet {
     DentistService service = new DentistService();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Dentist> dentists = service.getAllDentists();
-
-        request.setAttribute("dentists", dentists);
-        request.getRequestDispatcher("viewDentists.jsp").forward(request, response);
-
+        int id = Integer.parseInt(request.getParameter("id"));
+        Dentist dentist = service.getDentistById(id);
+        System.out.println(dentist);
+        request.setAttribute("dentist", dentist);
+        request.getRequestDispatcher("updateDentist.jsp").forward(request, response);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String first = request.getParameter("first");
-        String last = request.getParameter("last");
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("first");
+        String surname = request.getParameter("last");
         String dni = request.getParameter("dni");
         String birthdate = request.getParameter("birthdate");
-        String speciality = request.getParameter("speciality");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
+        String speciality = request.getParameter("speciality");
+
 
         Dentist dentist = new Dentist();
-        dentist.setName(first);
-        dentist.setSurname(last);
+        dentist.setId(id);
+        dentist.setName(name);
+        dentist.setSurname(surname);
         dentist.setDni(dni);
         dentist.setBirthdate(LocalDate.parse(birthdate));
-        dentist.setSpeciality(speciality);
         dentist.setPhone(phone);
         dentist.setAddress(address);
+        dentist.setSpeciality(speciality);
 
-        service.save(dentist);
+        Dentist u = service.update(dentist);
 
         response.sendRedirect("DentistServlet");
-
     }
 }

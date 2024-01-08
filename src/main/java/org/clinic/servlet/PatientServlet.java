@@ -4,8 +4,9 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import org.clinic.entity.Dentist;
+import org.clinic.entity.Patient;
 import org.clinic.entity.User;
-import org.clinic.service.DentistService;
+import org.clinic.service.PatientService;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,21 +14,18 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
-@WebServlet(name = "DentistServlet", value = "/DentistServlet")
-public class DentistServlet extends HttpServlet {
+@WebServlet(name = "PatientServlet", value = "/PatientServlet")
+public class PatientServlet extends HttpServlet {
 
-    DentistService service = new DentistService();
-
+    PatientService service = new PatientService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Dentist> dentists = service.getAllDentists();
-
-        request.setAttribute("dentists", dentists);
-        request.getRequestDispatcher("viewDentists.jsp").forward(request, response);
-
+        List<Patient> patients = service.getAllPatients();
+        request.setAttribute("patients", patients);
+        request.getRequestDispatcher("viewPatients.jsp").forward(request, response);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,22 +33,21 @@ public class DentistServlet extends HttpServlet {
         String last = request.getParameter("last");
         String dni = request.getParameter("dni");
         String birthdate = request.getParameter("birthdate");
-        String speciality = request.getParameter("speciality");
+        String blood_type = request.getParameter("blood");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
 
-        Dentist dentist = new Dentist();
-        dentist.setName(first);
-        dentist.setSurname(last);
-        dentist.setDni(dni);
-        dentist.setBirthdate(LocalDate.parse(birthdate));
-        dentist.setSpeciality(speciality);
-        dentist.setPhone(phone);
-        dentist.setAddress(address);
+        Patient patient = new Patient();
+        patient.setName(first);
+        patient.setSurname(last);
+        patient.setDni(dni);
+        patient.setBirthdate(LocalDate.parse(birthdate));
+        patient.setBlood_type(blood_type);
+        patient.setPhone(phone);
+        patient.setAddress(address);
 
-        service.save(dentist);
+        service.save(patient);
 
-        response.sendRedirect("DentistServlet");
-
+        response.sendRedirect("PatientServlet");
     }
 }

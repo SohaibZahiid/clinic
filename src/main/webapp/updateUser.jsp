@@ -17,20 +17,20 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="text" class="form-control form-control-user" name="username" id="username"
-                                       placeholder="Username" value="<%=user.getUsername()%>">
+                                       placeholder="Username" value="<%=user.getUsername()%>" required>
                             </div>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control form-control-user" name="password" id="password"
-                                       placeholder="Password" value="<%=user.getPassword()%>">
+                                       placeholder="Password" value="<%=user.getPassword()%>" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control form-control-user" name="role"
-                                   id="role" placeholder="Role" value="<%=user.getRole()%>">
+                                   id="role" placeholder="Role" value="<%=user.getRole()%>" required>
                         </div>
 
-                        <input type="hidden" name="id" value="<%=user.getUser_id()%>"/>
+                        <input type="hidden" name="id" value="<%=user.getUser_id()%>" required/>
 
                         <button type="submit" class="btn btn-primary btn-user btn-block">
                             Update Account

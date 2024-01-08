@@ -7,17 +7,19 @@
     <class>org.clinic.entity.Dentist</class>
     <class>org.clinic.entity.Patient</class>
     <class>org.clinic.entity.Person</class>
-    <class>org.clinic.entity.Responsible</class>
-    <class>org.clinic.entity.Schedule</class>
-    <class>org.clinic.entity.Secretary</class>
-    <class>org.clinic.entity.Shift</class>
     <class>org.clinic.entity.User</class>
+    <class>org.clinic.entity.Appointment</class>
     <properties>
         <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
         <property name="jakarta.persistence.jdbc.url"    value="jdbc:mysql://localhost:3306/db_clinic?createDatabaseIfNotExist=true" />
         <property name="jakarta.persistence.jdbc.user"   value="root" />
         <property name="jakarta.persistence.jdbc.password" value="root" />
         <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create" />
+        <property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/load_script.sql"/>
+        <!-- Enable SQL logging -->
+        <property name="eclipselink.logging.level.sql" value="FINE"/>
+        <property name="eclipselink.logging.parameters" value="true"/>
+
     </properties>
 </persistence-unit>
 </persistence>

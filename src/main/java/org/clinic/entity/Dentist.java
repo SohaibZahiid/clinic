@@ -4,6 +4,7 @@ package org.clinic.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -15,21 +16,10 @@ import java.util.List;
 public class Dentist extends Person{
     private String speciality;
     @OneToMany(mappedBy = "dentist")
-    private List<Shift> shifts;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-    @OneToOne
-    private Schedule schedule;
+    private List<Appointment> appointments;
 
-
-    public Dentist(String name, String surname, String dni, Date birthdate, String phone, String address, String speciality, List<Shift> shifts, User user, Schedule schedule) {
-        super(name, surname, dni, birthdate, phone, address);
+    public Dentist(int id, String name, String surname, String dni, LocalDate birthdate, String phone, String address, String speciality) {
+        super(id, name, surname, dni, birthdate, phone, address);
         this.speciality = speciality;
-        this.shifts = shifts;
-        this.user = user;
-        this.schedule = schedule;
     }
-
-
 }
