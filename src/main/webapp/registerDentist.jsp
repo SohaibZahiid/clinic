@@ -16,35 +16,35 @@
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" name="first" id="exampleFirstName"
-                                           placeholder="First Name">
+                                           placeholder="First Name" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control form-control-user" name="last" id="exampleLastName"
-                                           placeholder="Last Name">
+                                           placeholder="Last Name" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" name="dni" id="dni"
-                                           placeholder="DNI">
+                                           placeholder="DNI" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="date" class="form-control form-control-user" name="birthdate" id="birthdate"
-                                           placeholder="Birthdate">
+                                           placeholder="Birthdate" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user"
-                                       id="speciality" placeholder="Speciality" name="speciality">
+                                       id="speciality" placeholder="Speciality" name="speciality" required>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="tel" class="form-control form-control-user"
-                                           id="phone" placeholder="Phone" name="phone">
+                                           id="phone" placeholder="Phone" name="phone" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control form-control-user"
-                                           id="address" placeholder="Address" name="address">
+                                           id="address" placeholder="Address" name="address" required>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">

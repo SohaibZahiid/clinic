@@ -1,4 +1,4 @@
-<%--
+<%@ page import="org.clinic.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: Sohaib Zahid
   Date: 1/4/2024
@@ -58,8 +58,50 @@
             </div>
         </div>
     </li>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+           aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-user"></i>
+            <span>User</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Actions:</h6>
+                <a class="collapse-item" href="UserServlet">View Users</a>
+                <a class="collapse-item" href="../registerUser.jsp">Register User</a>
+            </div>
+        </div>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+           aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Appointments</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Actions:</h6>
+                <a class="collapse-item" href="AppointmentServlet">View Appointments</a>
+                <%--
+                    User loggedUser = (User) session.getAttribute("loggedUser");
+
+                    if (loggedUser != null && loggedUser.getRole().equals("admin")) {
+                %>
+                <a class="collapse-item" href="DentistPatientServlet">Schedule Appointment</a>
+
+                <%
+                    }
+                --%>
+                <a class="collapse-item" href="DentistPatientServlet">Schedule Appointment</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <!--
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
            aria-expanded="true" aria-controls="collapseTwo">
@@ -74,7 +116,7 @@
             </div>
         </div>
     </li>
-
+    -->
 
 
     <!-- Divider -->

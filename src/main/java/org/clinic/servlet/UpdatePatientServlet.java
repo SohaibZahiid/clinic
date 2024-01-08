@@ -3,9 +3,10 @@ package org.clinic.servlet;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.clinic.dao.PatientDao;
 import org.clinic.entity.Dentist;
-import org.clinic.entity.User;
-import org.clinic.service.DentistService;
+import org.clinic.entity.Patient;
+import org.clinic.service.PatientService;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,16 +14,17 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
-@WebServlet(name = "UpdateDentistServlet", value = "/UpdateDentistServlet")
-public class UpdateDentistServlet extends HttpServlet {
-    DentistService service = new DentistService();
+@WebServlet(name = "UpdatePatientServlet", value = "/UpdatePatientServlet")
+public class UpdatePatientServlet extends HttpServlet {
+    PatientService service = new PatientService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Dentist dentist = service.getDentistById(id);
-        System.out.println(dentist);
-        request.setAttribute("dentist", dentist);
-        request.getRequestDispatcher("updateDentist.jsp").forward(request, response);
+        Patient patient = service.getPatientById(id);
+        System.out.println(patient);
+        request.setAttribute("patient", patient);
+        request.getRequestDispatcher("updatePatient.jsp").forward(request, response);
+
     }
 
     @Override
@@ -34,21 +36,22 @@ public class UpdateDentistServlet extends HttpServlet {
         String birthdate = request.getParameter("birthdate");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        String speciality = request.getParameter("speciality");
+        String blood = request.getParameter("blood");
 
 
-        Dentist dentist = new Dentist();
-        dentist.setId(id);
-        dentist.setName(name);
-        dentist.setSurname(surname);
-        dentist.setDni(dni);
-        dentist.setBirthdate(LocalDate.parse(birthdate));
-        dentist.setPhone(phone);
-        dentist.setAddress(address);
-        dentist.setSpeciality(speciality);
+        Patient patient = new Patient();
+        patient.setId(id);
+        patient.setName(name);
+        patient.setSurname(surname);
+        patient.setDni(dni);
+        patient.setBirthdate(LocalDate.parse(birthdate));
+        patient.setPhone(phone);
+        patient.setAddress(address);
+        patient.setBlood_type(blood);
 
-        Dentist u = service.update(dentist);
 
-        response.sendRedirect("DentistServlet");
+        Patient u = service.update(patient);
+
+        response.sendRedirect("PatientServlet");
     }
 }

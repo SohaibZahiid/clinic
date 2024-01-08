@@ -48,6 +48,7 @@ public class DentistDao {
         d.setSurname(dentist.getSurname());
         d.setDni(dentist.getDni());
         d.setBirthdate(dentist.getBirthdate());
+        d.setSpeciality(dentist.getSpeciality());
         d.setPhone(dentist.getPhone());
         d.setAddress(dentist.getAddress());
 

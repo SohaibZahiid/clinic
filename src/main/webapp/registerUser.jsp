@@ -15,17 +15,22 @@
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" name="username" id="username"
-                                           placeholder="Username">
+                                           placeholder="Username" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user" name="password" id="password"
-                                           placeholder="Password">
+                                           placeholder="Password" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" name="role"
-                                       id="role" placeholder="Role">
+                                <select class="form-control" style="border-radius: 999px; font-size: 12px; height: 50px" name="role" aria-label="Default select example" required>
+                                    <option selected>Select...</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="dentist">Dentist</option>
+                                    <option value="patient">Patient</option>
+
+                                </select>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-user btn-block">
