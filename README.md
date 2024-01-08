@@ -1,2 +1,2 @@
 1. Click on login to generate database and tables
-2. Username: admin | Password: admin
+2. Then use this credentials -> Username: admin | Password: admin
